@@ -1,13 +1,24 @@
 
 //FUNCTION DATOS: función para pedir datos usando scope local y return para usar el valor nombre fuera de la función
-function pedirDatos(){
+function bienvenidaPedirDatos(){
     const nombre = prompt("Bienvenido al ejercicio de la clase 3 de JS. ¿Cuál es tu nombre?");
     console.log("el nombre del participante es:", nombre);
     alert("Hola " + nombre);
     return nombre;
 }
 
-const nombre = pedirDatos();
+function quieresJugar(){
+    const respuesta = prompt("Quieres jugar un juego? responde (si/no)").toLowerCase();
+    console.log("Lo que respondio a la participación:", respuesta);
+    return respuesta;
+}
+
+//FUNCIÓN PARA COMPROBAR QUIEN ES EL LADRÓN
+function comprobarSospechoso(sospechoso, ladron){
+    return sospechoso == ladron;
+} 
+
+const nombre = bienvenidaPedirDatos();
 
 
 //VARIABLES: las variables del juego, confirmación si acepta jugar, defino número de posición del ladrón, intentos, el estado si fue encontrado o no.
@@ -19,8 +30,7 @@ let encontrado = false;
 
 //INICIO DEL JUEGO
 do {
-    confirmacion = prompt("Quieres jugar un juego? responde (si/no)").toLowerCase();
-    console.log("Lo que respondio a la participación:", confirmacion);
+    confirmacion = quieresJugar();
 
     if(confirmacion == "si"){
 
@@ -33,9 +43,9 @@ do {
             const sospechoso = parseInt(prompt("Escribe el número de quién crees que es el ladrón: \n1. Carlos \n2. Diego \n3. Martín \n4. Sebastián"));
             console.log("la respuesta de quien cree que es el sospechoso:", sospechoso);
 
-            //CONDICIONAL: depende la elección es el resultado
-            if(sospechoso == ladron){
 
+            //CONDICIONAL: depende la elección es el resultado
+            if(comprobarSospechoso(sospechoso, ladron)){
                 encontrado = true;
                 alert("Felicidades " + nombre + " encontraste al ladrón");
             }
