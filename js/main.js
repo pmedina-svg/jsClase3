@@ -9,6 +9,7 @@ let confirmacion;
 const ladron = 3;
 let intentos = 0;
 let encontrado = false;
+let jugarDeNuevo;
 
 
 //INICIO DEL JUEGO
@@ -18,44 +19,59 @@ do {
 
     if(confirmacion == "si"){
 
-        alert("Alguien han robado una joyería!");
-        alert("La policía capturó a 4 sospechosos: Carlos, Diego, Martín y Sebastián");
-        alert("Tienes 3 intentos para encontrar al ladrón.");
+        do{
 
-        //BUCLE: inicio de los intentos     
-        while(intentos < 3 && !encontrado){
-            const sospechoso = parseInt(prompt("Escribe el número de quién crees que es el ladrón: \n1. Carlos \n2. Diego \n3. Martín \n4. Sebastián"));
-            console.log("la respuesta de quien cree que es el sospechoso:", sospechoso);
+            intentos = 0;
+            encontrado = false;
 
-            //CONDICIONAL: depende la elección es el resultado
-            if(sospechoso == ladron){
+            alert("Alguien han robado una joyería!");
+            alert("La policía capturó a 4 sospechosos: Carlos, Diego, Martín y Sebastián");
+            alert("Tienes 3 intentos para encontrar al ladrón.");
 
-                encontrado = true;
-                alert("Felicidades " + nombre + " encontraste al ladrón");
+            //BUCLE: inicio de los intentos     
+            while(intentos < 3 && !encontrado){
+                const sospechoso = parseInt(prompt("Escribe el número de quién crees que es el ladrón: \n1. Carlos \n2. Diego \n3. Martín \n4. Sebastián"));
+                console.log("la respuesta de quien cree que es el sospechoso:", sospechoso);
+
+                //CONDICIONAL: depende la elección es el resultado
+                if(sospechoso == ladron){
+
+                    encontrado = true;
+                    alert("Felicidades " + nombre + " encontraste al ladrón");
+                    console.log("Respuesta correcta, encontró al ladrón");
+                }
+                    
+                else if(sospechoso >=1 && sospechoso <= 4){
+                    intentos++;
+                    console.log(intentos);
+                    alert("Ups, no es el ladrón. Vuelve a intentarlo");
+                }
+
+                else{
+                    alert("Pensé que lo podrías decir jajaja, pero no hay ese número de sospechoso, vuelve a intentarlo");
+                }
             }
-                
-            else if(sospechoso >=1 && sospechoso <= 4){
-                intentos++;
-                console.log(intentos);
-                alert("Ups, no es el ladrón. Vuelve a intentarlo");
+
+            
+            //RESULTADO del juego
+            if(encontrado == false){
+                alert("Game over, el ladrón escapó");
+                jugarDeNuevo = confirm("Quieres intentarlo denuevo?");
+                console.log("Lo que respondio a si quería volver a jugar:", jugarDeNuevo);
             }
 
+            //SI NO quiere volver a jugar
             else{
-                alert("Pensé que lo podrías decir jajaja, pero no hay ese número de sospechoso, vuelve a intentarlo");
+                jugarDeNuevo = false;
             }
-        }
 
-        
-        //RESULTADO del juego
-        if(encontrado == false){
-            alert("Game over, el ladrón escapó");
-        }
-
+        } while(jugarDeNuevo);
 
     }
 
     else if(confirmacion =="no"){
         alert("No te preocupes " + nombre + " será en una próxima vez");
+        console.log("No quiso jugar");
     }
 
     else{
