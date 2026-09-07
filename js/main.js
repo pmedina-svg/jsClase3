@@ -1,5 +1,5 @@
 
-//CAPTURA DATOS: le pedimos datos a quien interactua
+//FUNCTION DATOS: función para pedir datos usando scope local y return para usar el valor nombre fuera de la función
 function pedirDatos(){
     const nombre = prompt("Bienvenido al ejercicio de la clase 3 de JS. ¿Cuál es tu nombre?");
     console.log("el nombre del participante es:", nombre);
@@ -7,7 +7,7 @@ function pedirDatos(){
     return nombre;
 }
 
-pedirDatos();
+const nombre = pedirDatos();
 
 
 //VARIABLES: las variables del juego, confirmación si acepta jugar, defino número de posición del ladrón, intentos, el estado si fue encontrado o no.
